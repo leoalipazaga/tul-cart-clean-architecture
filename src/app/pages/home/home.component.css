@@ -1,0 +1,11 @@
+.ant-layout-header {
+    background: #fff;
+}
+
+.ant-menu {
+    text-align: right;
+}
+
+.ant-layout-content {
+    min-height: 100vh;
+}

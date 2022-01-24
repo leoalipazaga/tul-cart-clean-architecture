@@ -1,0 +1,5 @@
+<div class="inner-content" nz-row [nzGutter]="[24, 24]" [nzJustify]="'space-between'">
+    <div nz-col *ngFor="let item of items$ | async">
+        <tul-card [item]="item" (onAddToCart)="onAddItem($event)"></tul-card>
+    </div>
+</div>

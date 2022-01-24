@@ -1,0 +1,27 @@
+<div class="inner-content">
+    <nz-table #basicTable [nzData]="listOfData$ | async">
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Total</th>
+                <th>Accion</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of basicTable.data" #data>
+                <td>{{ data.name }}</td>
+                <td>$ {{ data.price }}</td>
+                <td>
+                    <nz-input-number [ngModel]="data.quantity" (ngModelChange)="onUpdateQuantity($event, data)" [nzMin]="1" [nzMax]="10"
+                        [nzStep]="1"></nz-input-number>
+                </td>
+                <td>$ {{ data.total }}</td>
+                <td>
+                    <a (click)="onRemoveItem(data.id)">Eliminar</a>
+                </td>
+            </tr>
+        </tbody>
+    </nz-table>
+</div>

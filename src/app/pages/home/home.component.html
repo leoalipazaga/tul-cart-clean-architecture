@@ -1,0 +1,39 @@
+<nz-layout class="layout">
+    <nz-header nzTheme="light" style="display: flex; justify-content: space-between;">
+        <div class="logo">
+            <img src="https://tul.com.co/assets/img/logo-tul.png" alt="tul-logo" width="70px">
+        </div>
+        <ul nz-menu nzTheme="light" nzMode="horizontal">
+            <li nz-menu-item nzIcon="home" (click)="goToHome()">
+                <!-- <span>Cart</span> -->
+                <i nz-icon nzType="home" nzTheme="outline" style="font-size: 16px;">
+                </i>
+            </li>
+            <li nz-menu-item nzIcon="shopping-cart" (click)="goToCart()">
+                <!-- <span>Cart</span> -->
+                <i nz-icon nzType="shopping-cart" nzTheme="outline" style="font-size: 16px;">
+                </i>
+                <nz-badge [nzCount]="cartLenght$ | async" [nzStyle]="{transform: 'translate(-15%, -20%)'}"></nz-badge>
+            </li>
+            <li nz-menu-item (click)="goToLogin()" *ngIf="!(isAuth$ | async)">
+                <i nz-icon nzType="login" nzTheme="outline" style="font-size: 16px;">
+                </i>
+                <!-- <span>Login</span> -->
+            </li>
+            <li nz-menu-item (click)="goToLogout()" *ngIf="isAuth$ | async">
+                <i nz-icon nzType="logout" nzTheme="outline" style="font-size: 16px;">
+                </i>
+                <!-- <span>Login</span> -->
+            </li>
+            <li nz-menu-item>
+                <i nz-icon nzType="user" nzTheme="outline" style="font-size: 16px;">
+                </i>
+                <!-- <span>User</span> -->
+            </li>
+        </ul>
+    </nz-header>
+    <nz-content>
+        <router-outlet></router-outlet>
+    </nz-content>
+    <nz-footer>Ant Design ©2020 Implement By Angular, NgZorro, Ngrx and Based on Clean Architecture</nz-footer>
+</nz-layout>

@@ -1,0 +1,29 @@
+<div nz-row [nzJustify]="'center'" [nzAlign]="'middle'" class="login-form__container">
+  <form nz-form [formGroup]="form" class="login-form" (ngSubmit)="onLogin.next(form.value)">
+    <nz-form-item>
+      <nz-form-control [nzErrorTip]="emailErrorTpl">
+        <nz-input-group nzPrefixIcon="user">
+          <input type="text" nz-input formControlName="email" placeholder="Email" />
+          <ng-template #emailErrorTpl>
+            <ng-container *ngIf="form.controls['email'].hasError('required')">Please input your email!</ng-container>
+            <ng-container *ngIf="form.controls['email'].hasError('pattern')">Email is invalid!</ng-container>
+          </ng-template>
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control [nzErrorTip]="passwordErrorTpl">
+        <nz-input-group nzPrefixIcon="lock">
+          <input type="password" nz-input formControlName="password" placeholder="Password" />
+          <ng-template #passwordErrorTpl>
+            <ng-container *ngIf="form.controls['password'].hasError('required')">Please input your password!</ng-container>
+            <ng-container *ngIf="form.controls['password'].hasError('minlength')">Password should be 6 characters at least!</ng-container>
+          </ng-template>
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'" [disabled]="form.invalid">Log in</button>
+    Or
+    <a (click)="onRegister()">register now!</a>
+  </form>
+</div>
